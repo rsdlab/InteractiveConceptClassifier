@@ -1,0 +1,54 @@
+# InteractionConceptClassifier CMake config file
+#
+# This file sets the following variables:
+# InteractionConceptClassifier_FOUND - Always TRUE.
+# InteractionConceptClassifier_INCLUDE_DIRS - Directories containing the InteractionConceptClassifier include files.
+# InteractionConceptClassifier_IDL_DIRS - Directories containing the InteractionConceptClassifier IDL files.
+# InteractionConceptClassifier_LIBRARIES - Libraries needed to use InteractionConceptClassifier.
+# InteractionConceptClassifier_DEFINITIONS - Compiler flags for InteractionConceptClassifier.
+# InteractionConceptClassifier_VERSION - The version of InteractionConceptClassifier found.
+# InteractionConceptClassifier_VERSION_MAJOR - The major version of InteractionConceptClassifier found.
+# InteractionConceptClassifier_VERSION_MINOR - The minor version of InteractionConceptClassifier found.
+# InteractionConceptClassifier_VERSION_REVISION - The revision version of InteractionConceptClassifier found.
+# InteractionConceptClassifier_VERSION_CANDIDATE - The candidate version of InteractionConceptClassifier found.
+
+message(STATUS "Found InteractionConceptClassifier-@PROJECT_VERSION@")
+set(InteractionConceptClassifier_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(InteractionConceptClassifier_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(InteractionConceptClassifier_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(InteractionConceptClassifier_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(InteractionConceptClassifier_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(InteractionConceptClassifier_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(InteractionConceptClassifier_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(InteractionConceptClassifier_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(InteractionConceptClassifier_VERSION @PROJECT_VERSION@)
+set(InteractionConceptClassifier_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(InteractionConceptClassifier_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(InteractionConceptClassifier_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(InteractionConceptClassifier_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
